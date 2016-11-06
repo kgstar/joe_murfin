@@ -23,8 +23,10 @@
 		<link href="libs/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
 		<link href="libs/bootstrap-datepicker/datepicker.css" rel="stylesheet">
 		<link href="css/styles.css" rel="stylesheet">
-	</head>
 
+		<script src="libs/jquery-2.1.4.min.js"></script>
+		<script src="libs/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+	</head>
 	<body>
 		<div class="row">
 			<div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">

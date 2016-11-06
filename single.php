@@ -1,18 +1,74 @@
-<?php require_once('header.php'); ?>
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+	<head>
+		<meta charset="utf-8">
+		<title>People</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="libs/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="libs/bootstrap-datepicker/datepicker.css" rel="stylesheet">
+		<link href="css/styles.css" rel="stylesheet">
 
-<div class="row content">
-	<div class="col-md-12">
-		<div class="embed-responsive embed-responsive-4by3">
-		    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
+		<script src="libs/jquery-2.1.4.min.js"></script>
+		<script src="libs/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class="row">
+			<div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">
+				<div class="row logo">
+					<a href="index.php">
+						<img src="imgs/logo.png" class="img-responsive" alt="Responsive image">
+					</a>
+				</div>
+				<div class="row header">
+					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+						<a href="#">VIDEOS</a>
+					</div>
+					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+						<a href="#">RANDOM</a>
+					</div>
+					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+						<a href="#">SEARCH</a>
+					</div>
+					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+						<a href="#">CONTACT</a>
+					</div>
+				</div>
+				<div class="row content">
+					<div class="col-md-12">
+						<div class="embed-responsive embed-responsive-4by3">
+						    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
+						</div>
+					</div>
+					<div class="col-md-12 video-title">
+						LEGO BATMAN MOVIE
+					</div>
+					<div class="col-md-12 video-description">
+					Batman is a little lonely. despite the billons of dollars and being a superhero, the dark knight has trouble connecting with other people - probably because of that time his parents were murdered.
+					Alfred takes it upon himself to help batman make some relationships, namely with that kid he forgot he adopted - who gets a costume of his own to wear.
+					</div>
+				</div>
+				<div class="row more">
+					<a href="index.php" type="button" class="btn btn-lg btn-block btn-warning">MORE VIDEOS</a>
+				</div>
+				<div class="row footer ">
+					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+						<a href="#">VIDEOS</a>
+					</div>
+					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+						<a href="#">RANDOM</a>
+					</div>
+					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+						<a href="#">SEARCH</a>
+					</div>
+					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+						<a href="#">CONTACT</a>
+					</div>
+				</div>
+				<div class="row copyright">
+					COPYRIGHT © WILL NEED NAME INSERTING HERE
+				</div>
+			</div>
 		</div>
-	</div>
-	<div class="col-md-12 video-title">
-		LEGO BATMAN MOVIE
-	</div>
-	<div class="col-md-12 video-description">
-	Batman is a little lonely. despite the billons of dollars and being a superhero, the dark knight has trouble connecting with other people - probably because of that time his parents were murdered.
-	Alfred takes it upon himself to help batman make some relationships, namely with that kid he forgot he adopted - who gets a costume of his own to wear.
-	</div>
-</div>
+	</body>
+</html>
 
-<?php require_once('footer.php'); ?>
