@@ -1,0 +1,51 @@
+.menu-text {
+    text-align: center;
+    
+}
+.menu-text a:hover {
+	text-decoration: none;
+}
+.menu-text a {
+	font-size: 25px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    color: #f7c018;
+}
+.copyright {
+	text-align: center;
+	font-size: 15px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    color: #f7c018;
+}
+.header {
+	border-bottom: 2px solid #f7c018;
+}
+
+.footer {
+	border-top: 2px solid #f7c018;
+}
+
+.video-div {
+	padding: 10px;
+}
+.row {
+	padding: 10px;
+}
+
+.video-title {
+	padding-top: 20px;
+	font-size: 25px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    color: #f7c018;
+}
+
+.video-description {
+	padding: 10px;
+	font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+}
+
+
