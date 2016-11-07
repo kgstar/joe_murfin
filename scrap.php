@@ -28,7 +28,7 @@
     /**
      * get information of videos as array from the site.
      */
-    function getVideoInfo ($siteURL) {
+    function scrapVideos ($siteURL) {
         $data = array();
         $siteURL = strtolower($siteURL);
         if (strpos($siteURL, 'wimp.com') >= 0) {

@@ -37,7 +37,7 @@
 					<ul class="nav nav-tabs">
 					  	<li><a href="stored_videos.php">Stored Videos</a></li>
 					  	<li class="active"><a>Scrap Videos</a></li>
-					  	<li><a href="manage_users.php">Manage Users</a></li>
+					  	<!-- <li><a href="manage_users.php">Manage Users</a></li> -->
 					</ul>
 
 					<div class="tab-content">
@@ -71,7 +71,7 @@
 									</div>
 								</div>
 					    	</div>
-					    	<div class="row">
+					    	<div class="row data-div">
 					    		<table id="example1" class="table" cellspacing="0" width="100%">
 							        <thead>
 							            <tr>
@@ -83,23 +83,7 @@
 							            </tr>
 							        </thead>
 							        <tbody id="tbody">
-							        <!-- <?php for ($r = 1; $r <= 5; $r ++) { ?>
-							            <tr>
-							                <td class="text-center"><?php echo $r; ?></td>
-							                <td>System Architect</td>
-							                <td>Edinburgh</td>
-							                <td class="text-center">
-							                	<div class="embed-responsive embed-responsive-4by3">
-												    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/l7op92W7voE"></iframe>
-												</div>
-							                </td>
-							                <td class="text-center">
-							                	<button type="button" onclick="addVideo(<?php echo $r; ?>);" class="btn btn-primary">
-											      	<span class="glyphicon glyphicon-plus"></span>
-											    </button>
-							                </td>
-							            </tr>
-							            <?php } ?> -->
+
 							        </tbody>
 							    </table>
 					    	</div>
@@ -132,8 +116,9 @@
 		</div>
 	</body>
 	<script type="text/javascript">
+		var table;
 		$(document).ready(function() {
-		    $('#example').DataTable();
+		    table = $('#example').DataTable();
 
 		    $('.dropdown-menu a').click(function() {
 			    // console.log($(this).attr('data-value'));
@@ -141,76 +126,83 @@
 		  	});
 
 		  	$('#scrap_video').click(function () {
-		  		$(".progress-bar").animate({width: "0%"}, 10, null, function () {
-		  			$(".progress-bar").animate({width: "100%"}, 30000);
-		  		});
-
-		  		$.get('controller.php?flag=scrap_videos&site_url=' + $('.video_url_text').val(), function (response) {
-		  			rows = eval(response);
-		  			html = '';
-		  			for (r in rows) {
-		  				data = rows[r];
-			  			html += '<tr>';
-			                html += '<td class="text-center">' + (++ r) + '</td>';
-			                html += '<td>' + data['title'] + '</td>';
-			                html += '<td>' + data['description'] + '</td>';
-			                html += '<td class="text-center">';
-			                	html += '<a href="#" data-toggle="modal" data-target="#videoModal" data-theVideo="' + data['video_url'] + '">';
-			                		html += '<img src="' + data['thumbnail'] + '" alt="" class="img-responsive"/>';
-			                	html += '</a>';
-			                html += '</td>';
-			                html += '<td class="text-center">';
-			                	html += '<button type="button" onclick="addVideo();" class="btn btn-primary">';
-							      	html += '<span class="glyphicon glyphicon-plus"></span>';
-							    html += '</button>';
-			                html += '</td>';
-			            html += '</tr>';
-			        }
-			        
-			        $('#tbody').html(html);
-			        
-			        function autoPlayYouTubeModal() {
-				      	var trigger = $("body").find('[data-toggle="modal"]');
-				      	trigger.click(function () {
-				          	var theModal = $(this).data("target"),
-				              	videoSRC = $(this).attr("data-theVideo"),
-				              	videoSRCauto = videoSRC + "?autoplay=1";
-					          	$(theModal + ' iframe').attr('src', videoSRCauto);
-					          	$(theModal + ' button.close').click(function () {
-				              	$(theModal + ' iframe').attr('src', videoSRC);
-			    	      	});
-				      	});
-				  	}
-				  	autoPlayYouTubeModal();
-
-			        $(".progress-bar").stop().animate({width: "100%"}, 100, null, function () {
-			        	$(".progress-bar").stop();
-			        	setTimeout(function () {
-							$(".progress-bar").animate({width: "0%"}, 10);
-				        }, 1000);
-			        });
-			        
-		  		})
+		  		scrapVideo();
 		  	});
-
 		  	
+		  	// scrapVideo();
 		});
 
-		
+		function scrapVideo () {
+	    	$(".progress-bar").animate({width: "0%"}, 10, null, function () {
+	  			$(".progress-bar").animate({width: "100%"}, 30000);
+	  		});
 
-		function addVideo (videoId) {
-	    	alert('added 1 video in your database.');
+	  		$.get('controller.php?flag=scrap_videos&site_url=' + $('.video_url_text').val(), function (response) {
+	  			rows = eval(response);
+	  			html = '';
+	  			for (r in rows) {
+	  				data = rows[r];
+		  			html += '<tr>';
+		                html += '<td class="text-center">' + (++ r) + '</td>';
+		                html += '<td class="title">' + data['title'] + '</td>';
+		                html += '<td class="description">' + data['description'] + '</td>';
+		                html += '<td class="video_url text-center">';
+		                	html += '<a href="#" data-toggle="modal" data-target="#videoModal" data-theVideo="' + data['video_url'] + '">';
+		                		html += '<img src="' + data['thumbnail'] + '" alt="" class="img-responsive"/>';
+		                	html += '</a>';
+		                	html += '<span class="thumbnail hide">' + data['thumbnail'] + '</span>';
+		                	html += '<span class="video_url_span hide">' + data['video_url'] + '</span>';
+		                html += '</td>';
+		                html += '<td class="text-center">';
+		                	html += '<button type="button" onclick="saveVideo(this.parentNode.parentNode);" class="btn btn-primary">';
+						      	html += '<span class="glyphicon glyphicon-floppy-disk"></span>';
+						    html += '</button>';
+		                html += '</td>';
+		            html += '</tr>';
+		        }
+		        
+		        $('#tbody').html(html);
+		        
+		        function autoPlayYouTubeModal() {
+			      	var trigger = $("body").find('[data-toggle="modal"]');
+			      	trigger.click(function () {
+			          	var theModal = $(this).data("target"),
+			              	videoSRC = $(this).attr("data-theVideo"),
+			              	videoSRCauto = videoSRC + "?autoplay=1";
+				          	$(theModal + ' iframe').attr('src', videoSRCauto);
+				          	$(theModal + ' button.close').click(function () {
+			              	$(theModal + ' iframe').attr('src', videoSRC);
+		    	      	});
+			      	});
+			  	}
+			  	autoPlayYouTubeModal();
+
+		        $(".progress-bar").stop().animate({width: "100%"}, 100, null, function () {
+		        	$(".progress-bar").stop();
+		        	setTimeout(function () {
+						$(".progress-bar").animate({width: "0%"}, 10);
+			        }, 3000);
+		        });
+		        
+	  		});
 	    }
 
-	    function editVideo (videoId) {
-	    	alert('asdfasdf');
+	    function saveVideo (rowObj) {
+	    	if (confirm('Are you sure want to save this video to your database?')) {
+	    		$.ajax({
+					type: "POST",
+					url: 'controller.php?flag=save_video',
+					data: {
+			    		title : $('.title', rowObj).html(),
+			    		description : $('.description', rowObj).html(),
+			    		thumbnail : $('.thumbnail', rowObj).html(),
+			    		video_url : $('.video_url_span', rowObj).html()
+		    		},
+					success: function (response) {
+					}
+				});
+	    	}
 	    }
-
-	    function deleteVideo (videoId) {
-	    	confirm('Are you sure want to delete this video?');
-	    }
-
-	    // https://datatables.net/reference/event/page
 	</script>
 </html>
 

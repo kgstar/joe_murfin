@@ -55,3 +55,7 @@
 .progress {
 	margin-top: 8px;
 }
+
+#scrap_videos .data-div {
+	margin: -25px;
+}
