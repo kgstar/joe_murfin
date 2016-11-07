@@ -52,3 +52,6 @@
 .form-control {
 	padding: 4px !important;
 }
+.progress {
+	margin-top: 8px;
+}

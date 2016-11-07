@@ -103,7 +103,7 @@
 				e.preventDefault();
 			});
 			$('#login-submit').click(function () {
-				window.open('admin.php', '_self');
+				window.open('stored_videos.php', '_self');
 			});
 			$('#register-submit').click(function () {
 				window.open('login.php', '_self');

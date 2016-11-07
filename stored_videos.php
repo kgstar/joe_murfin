@@ -35,8 +35,9 @@
 				</div>			
 				<div class="row content">
 					<ul class="nav nav-tabs">
-					  	<li class="active"><a data-toggle="tab" href="#stored_videos">Stored Videos</a></li>
-					  	<li><a data-toggle="tab" href="#get_videos">Scrap Videos</a></li>
+					  	<li class="active"><a>Stored Videos</a></li>
+					  	<li><a href="scrap_videos.php">Scrap Videos</a></li>
+					  	<li><a href="manage_users.php">Manage Users</a></li>
 					</ul>
 
 					<div class="tab-content">
@@ -61,7 +62,7 @@
 							                <td>Edinburgh</td>
 							                <td class="text-center">
 							                	<div class="embed-responsive embed-responsive-4by3">
-												    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
+												    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/XGSy3_Czz8k"></iframe>
 												</div>
 							                </td>
 							                <td class="text-center">2011/04/25</td>
@@ -81,53 +82,11 @@
 					  	</div>
 
 					  	<div id="get_videos" class="tab-pane fade">
-					    	<div class="row">
-					    		<div class="form-group">
-									<div class="row">
-										<div class="col-sm-5">
-											<select class="form-control">
-												<option value="Wimp.com">Wimp.com</option>
-												<option value="Devour.com">Devour.com</option>
-											</select>
-										</div>
-										<div class="col-sm-2">
-											<button class="form-control btn btn-lg btn-info" id="login-form-link">Scrap</button>
-										</div>
-									</div>
-								</div>
-					    	</div>
-					    	<div class="row">
-					    		<table id="example1" class="table" cellspacing="0" width="100%">
-							        <thead>
-							            <tr>
-							                <th class="text-center">No</th>
-							                <th class="text-center">Title</th>
-							                <th class="text-center">Description</th>
-							                <th class="text-center">Video</th>
-							                <th class="text-center">Add</th>
-							            </tr>
-							        </thead>
-							        <tbody>
-							        <?php for ($r = 1; $r <= 5; $r ++) { ?>
-							            <tr>
-							                <td class="text-center"><?php echo $r; ?></td>
-							                <td>System Architect</td>
-							                <td>Edinburgh</td>
-							                <td class="text-center">
-							                	<div class="embed-responsive embed-responsive-4by3">
-												    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
-												</div>
-							                </td>
-							                <td class="text-center">
-							                	<button type="button" onclick="addVideo(<?php echo $r; ?>);" class="btn btn-primary">
-											      	<span class="glyphicon glyphicon-plus"></span>
-											    </button>
-							                </td>
-							            </tr>
-							            <?php } ?>
-							        </tbody>
-							    </table>
-					    	</div>
+					    	
+					  	</div>
+
+					  	<div id="manage_users" class="tab-pane fade">
+					    	
 					  	</div>
 					</div>
 
