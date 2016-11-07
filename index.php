@@ -1,18 +1,7 @@
 <?php 
-	$videos = array(
-		array('src'=>'1', 'title'=>'First Video', 'description'=>'My Description'),
-		array('src'=>'2', 'title'=>'Second Video', 'description'=>'My Description'),
-		array('src'=>'3', 'title'=>'Second Video', 'description'=>'My Description'),
-		array('src'=>'4', 'title'=>'First Video', 'description'=>'My Description'),
-		array('src'=>'1', 'title'=>'First Video', 'description'=>'My Description'),
-		array('src'=>'2', 'title'=>'Second Video', 'description'=>'My Description'),
-		array('src'=>'3', 'title'=>'Second Video', 'description'=>'My Description'),
-		array('src'=>'4', 'title'=>'First Video', 'description'=>'My Description'),
-		array('src'=>'1', 'title'=>'First Video', 'description'=>'My Description'),
-		array('src'=>'2', 'title'=>'Second Video', 'description'=>'My Description'),
-		array('src'=>'3', 'title'=>'Second Video', 'description'=>'My Description'),
-		array('src'=>'4', 'title'=>'First Video', 'description'=>'My Description'),
-	);
+	require_once('controller.php');
+
+	$videos = getStoredVideos();
 ?>
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
@@ -36,16 +25,16 @@
 					</a>
 				</div>
 				<div class="row header">
-					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
 						<a href="#">VIDEOS</a>
 					</div>
-					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
 						<a href="#">RANDOM</a>
 					</div>
-					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
 						<a href="#">SEARCH</a>
 					</div>
-					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
 						<a href="#">CONTACT</a>
 					</div>
 				</div>
@@ -53,8 +42,8 @@
 				<?php 
 					foreach($videos as $key => $video) {
 						echo '<div class="col-md-6 video-div">';
-						echo '<a href="single.php?id='.$video['src'].'">';
-						echo '<img src="imgs/'.$video['src'].'.png" class="img-responsive" alt="Responsive image">';
+						echo '<a href="single.php?id='.$video['id'].'">';
+						echo '<img src="'.$video['thumbnail'].'" class="img-responsive max-width" alt="Responsive image">';
 						echo '</a>';
 						echo '</div>';
 					}
@@ -64,16 +53,16 @@
 					<a href="index.php" type="button" class="btn btn-lg btn-block btn-warning">MORE VIDEOS</a>
 				</div>
 				<div class="row footer ">
-					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
 						<a href="#">VIDEOS</a>
 					</div>
-					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
 						<a href="#">RANDOM</a>
 					</div>
-					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
 						<a href="#">SEARCH</a>
 					</div>
-					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
 						<a href="#">CONTACT</a>
 					</div>
 				</div>

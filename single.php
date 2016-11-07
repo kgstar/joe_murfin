@@ -1,3 +1,7 @@
+<?php
+	require_once('controller.php');
+	$video = getVideoInfo ($_REQUEST['id']); 
+?>
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 	<head>
@@ -20,47 +24,42 @@
 					</a>
 				</div>
 				<div class="row header">
-					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
 						<a href="#">VIDEOS</a>
 					</div>
-					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
 						<a href="#">RANDOM</a>
 					</div>
-					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
 						<a href="#">SEARCH</a>
 					</div>
-					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
 						<a href="#">CONTACT</a>
 					</div>
 				</div>
 				<div class="row content">
 					<div class="col-md-12">
 						<div class="embed-responsive embed-responsive-4by3">
-						    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
+						    <iframe class="embed-responsive-item" src="<?php echo $video['video_url']; ?>"></iframe>
 						</div>
 					</div>
-					<div class="col-md-12 video-title">
-						LEGO BATMAN MOVIE
-					</div>
-					<div class="col-md-12 video-description">
-					Batman is a little lonely. despite the billons of dollars and being a superhero, the dark knight has trouble connecting with other people - probably because of that time his parents were murdered.
-					Alfred takes it upon himself to help batman make some relationships, namely with that kid he forgot he adopted - who gets a costume of his own to wear.
-					</div>
+					<div class="col-md-12 video-title"><?php echo $video['title']; ?></div>
+					<div class="col-md-12 video-description"><?php echo $video['description']; ?></div>
 				</div>
 				<div class="row more">
 					<a href="index.php" type="button" class="btn btn-lg btn-block btn-warning">MORE VIDEOS</a>
 				</div>
 				<div class="row footer ">
-					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
 						<a href="#">VIDEOS</a>
 					</div>
-					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
 						<a href="#">RANDOM</a>
 					</div>
-					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
 						<a href="#">SEARCH</a>
 					</div>
-					<div class="col-xs-2 col-md-3 col-md-3 col-md-3 menu-text">
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
 						<a href="#">CONTACT</a>
 					</div>
 				</div>

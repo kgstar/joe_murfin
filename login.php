@@ -41,7 +41,7 @@
 															<input type="button" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-lg btn-primary btn-login" value="Log In">
 														</div>
 														<div class="col-sm-6">
-															<button class="form-control btn btn-lg btn-info" id="register-form-link">Register</button>
+															<input type="button" class="form-control btn btn-lg btn-info" id="register-form-link" value="Register"/>
 														</div>
 													</div>
 												</div>
@@ -65,7 +65,7 @@
 															<input type="button" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-lg btn-primary btn-register" value="Register Now">
 														</div>
 														<div class="col-sm-6">
-															<button class="form-control btn btn-lg btn-info" id="login-form-link">Login</button>
+															<input type="button" class="form-control btn btn-lg btn-info" id="login-form-link" value="Login"/>
 														</div>
 													</div>
 												</div>
@@ -103,13 +103,49 @@
 				e.preventDefault();
 			});
 			$('#login-submit').click(function () {
-				window.open('stored_videos.php', '_self');
+				if ($('#username').val() != '') {
+					$('#username').parent().removeClass('has-error');
+					if ($('#password').val() != '') {
+						$('#password').parent().removeClass('has-error');
+						doLogin(); 
+					} else {
+						$('#password').parent().addClass('has-error');
+					}
+				} else {
+					$('#username').parent().addClass('has-error');
+				}
 			});
 			$('#register-submit').click(function () {
-				window.open('login.php', '_self');
+				if ($('#username').val() != '') {
+					window.open('login.php', '_self');
+				} else {
+					$('#username').parent().addClass('has-error');
+				}
 			});
 		});
 
+		function doLogin () {
+			url = 'controller.php?flag=login';
+			url += '&username=' + $('#username').val();
+			url += '&password=' + $('#password').val();
+			$.get(url, function (response) {
+				if (response == 'OK') {
+					window.open('stored_videos.php', '_self');
+				} else if (response == 'BAD_USERNAME') {
+					alert('Retype text for user name');
+				} else if (response == 'BAD_PASSWORD') {
+					alert('Retype text for password');
+				} else {
+
+				}
+				$('#username').parent().removeClass('has-error');
+				$('#password').parent().removeClass('has-error');
+			});
+		}
+
+		function registerUser () {
+
+		}
 	</script>
 </html>
 

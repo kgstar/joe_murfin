@@ -3,6 +3,8 @@
   require_once('scrap.php');  
   require_once('functions.php'); 
 
+  if (!isset($_REQUEST['flag'])) $_REQUEST['flag'] = '';
+
   switch ($_REQUEST['flag']) {
     case 'scrap_videos':
       $videos = scrapVideos($_REQUEST['site_url']);
@@ -20,6 +22,10 @@
     
     case 'delete_video':
       exit (deleteVideo($_REQUEST['video_id']));
+    
+    case 'login':
+      $status = getLoggableStatus($_REQUEST['username'], $_REQUEST['password']);
+      exit($status);
   	
   	default:
   		# code...

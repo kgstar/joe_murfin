@@ -12,12 +12,17 @@
 		return $db;
     }
 
-    function getDataAsArray($result) {
+    function getRows($result) {
     	$rows = [];
 		while ($row = mysqli_fetch_assoc($result)) {
 			$rows[] = $row; 
 		}
 		return $rows;
+    }
+
+    function getRow($result) {
+    	$rows = getRows($result);
+    	return sizeof($rows) ? $rows[0] : NULL;
     }
 
     function saveVideoInfo ($title, $description, $videoURL, $thumbnail) {
@@ -29,6 +34,17 @@
     	return 'OK';
     }
 
+    function getVideoInfo ($videoId) {
+    	$db = getDB();
+    	$result = mysqli_query($db, "
+			SELECT * FROM `juice_db`.`videos` 
+			WHERE id = '".$videoId."'
+			ORDER BY reg_ymd DESC 
+			LIMIT 0, 10
+		") or die (mysqli_error($db));
+		return getRow($result);
+    }
+
     function getStoredVideos () {
     	$db = getDB();
     	$result = mysqli_query($db, "
@@ -37,7 +53,7 @@
 			ORDER BY reg_ymd DESC 
 			LIMIT 0, 10
 		") or die (mysqli_error($db));
-		return getDataAsArray($result);
+		return getRows($result);
     }
 
     function changeVideoInfo ($videoId, $title, $description) {
@@ -55,5 +71,23 @@
     	$db = getDB();
     	$result = mysqli_query($db, "DELETE FROM `juice_db`.`videos` WHERE id='".$videoId."'") or die (mysqli_error($db));
     	return 'OK';
+    }
+
+    function getLoggableStatus ($username, $password) {
+    	$db = getDB();
+    	$result = mysqli_query($db, "SELECT * FROM users WHERE user_name='".$username."'") or die (mysqli_error($db));
+    	$row = getRow($result);
+    	if (sizeof($row)) {
+    		$result = mysqli_query($db, "SELECT * FROM users WHERE user_pwd='".$password."'") or die (mysqli_error($db));
+	    	$row = getRow($result);
+	    	if (sizeof($row)) {
+	    		return 'OK';
+	    	} else {
+	    		return 'BAD_PASSWORD';
+	    	}	
+    	} else {
+    		return 'BAD_USERNAME';
+    	}
+    	return 'BAD';
     }
 ?>
