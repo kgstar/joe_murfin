@@ -10,14 +10,14 @@
 		<meta charset="utf-8">
 		<title>People</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href="libs/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
-		<link href="libs/bootstrap-datepicker/datepicker.css" rel="stylesheet">
-		<link href="libs/datatables-1.10.12/jquery.dataTables.min.css" rel="stylesheet">
-		<link href="css/styles.css" rel="stylesheet">
+		<link href="../libs/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../libs/bootstrap-datepicker/datepicker.css" rel="stylesheet">
+		<link href="../libs/datatables-1.10.12/jquery.dataTables.min.css" rel="stylesheet">
+		<link href="../css/styles.css" rel="stylesheet">
 
-		<script src="libs/jquery-2.1.4.min.js"></script>
-		<script src="libs/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
-		<script src="libs/datatables-1.10.12/jquery.dataTables.min.js"></script>
+		<script src="../libs/jquery-2.1.4.min.js"></script>
+		<script src="../libs/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+		<script src="../libs/datatables-1.10.12/jquery.dataTables.min.js"></script>
 
 	</head>
 	<body>
@@ -25,12 +25,15 @@
 			<div class="col-md-10 col-md-offset-1">
 				<div class="row logo">
 					<a href="index.php">
-						<img src="imgs/logo.png" class="img-responsive" alt="Responsive image">
+						<img src="../imgs/logo.png" class="img-responsive" alt="Responsive image">
 					</a>
 				</div>
 				<div class="row header">
-					<div class="col-md-2 col-md-offset-10 menu-text">
-						<a href="login.php">Log Out</a>
+					<div class="col-md-3 col-md-offset-7 menu-text">
+						<a href="#" data-toggle="modal" data-target="#addModal">Add Video</a>
+					</div>
+					<div class="col-md-2 menu-text">
+						<a href="../login.php">Log Out</a>
 					</div>
 				</div>			
 				<div class="row content">
@@ -87,6 +90,48 @@
 		        </div>
 		    </div>
 		</div>
+
+		<!-- line modal -->
+		<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+					<h3 class="modal-title" id="lineModalLabel">Add New Video Link</h3>
+				</div>
+				<div class="modal-body">
+					
+		            <!-- content goes here -->
+					<form>
+		              <div class="form-group">
+		                <label for="title_txt">Video Title</label>
+		                <input type="text" class="form-control" id="title_txt1" placeholder="Video Title">
+		              </div>
+		              <div class="form-group">
+		                <label for="description_txt">Description</label>
+		                <textarea rows=2 class="form-control" id="description_txt1" placeholder="Description"></textarea>
+		              </div>
+		              <div class="form-group">
+		                <label for="description_txt">Video URL</label>
+		                <input type="text" class="form-control" id="video_url_txt" placeholder="Video URL">
+		              </div>
+		            </form>
+
+				</div>
+				<div class="modal-footer">
+					<div class="btn-group btn-group-justified" role="group" aria-label="group button">
+						<div class="btn-group" role="group">
+							<button type="button" id="saveImage" onclick="addVideoLink();" class="btn btn-default btn-hover-green" data-action="save" role="button">Save</button>
+						</div>
+						<div class="btn-group" role="group">
+							<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		  </div>
+		</div>
+
 		<!-- line modal -->
 		<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
@@ -137,7 +182,7 @@
 		});
 
 		function loadVideos () {
-			url = 'controller.php?flag=get_stored_videos';
+			url = '../controller.php?flag=get_stored_videos';
 			$.get(url, function (response) {
 				rows = eval(response);
 	  			html = '';
@@ -188,8 +233,18 @@
 	    	$('#description_txt').val($('.description', row).html());
 	    }
 
+	    function addVideoLink () {
+	    	url = '../controller.php?flag=add_video_link';
+	    	url += '&title=' + $('#title_txt1').val();
+	    	url += '&description=' + $('#description_txt1').val();
+	    	url += '&video_url=' + $('#video_url_txt').val();
+    		$.get(url, function (response) {
+    			location.reload();
+    		});
+	    }
+
 	    function changeVideoInfo () {
-	    	url = 'controller.php?flag=change_video_info&video_id=' + currVideoId;
+	    	url = '../controller.php?flag=change_video_info&video_id=' + currVideoId;
 	    	url += '&title=' + $('#title_txt').val();
 	    	url += '&description=' + $('#description_txt').val();
     		$.get(url, function (response) {
@@ -199,7 +254,7 @@
 
 	    function deleteVideo (videoId) {
 	    	if (confirm('Are you sure want to delete this video?')) {
-	    		$.get('controller.php?flag=delete_video&video_id=' + videoId, function (response) {
+	    		$.get('../controller.php?flag=delete_video&video_id=' + videoId, function (response) {
 	    			location.reload();
 	    		});
 	    	}

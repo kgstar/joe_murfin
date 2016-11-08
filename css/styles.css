@@ -66,3 +66,6 @@ body {
 .max-width {
 	width: 100%;
 }
+.video-sub-title:hover, .video-sub-title:focus {
+	text-decoration: none! important;
+}

@@ -9,15 +9,15 @@
 	<head>
 		<meta charset="utf-8">
 		<title>People</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href="libs/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
-		<link href="libs/bootstrap-datepicker/datepicker.css" rel="stylesheet">
-		<link href="libs/datatables-1.10.12/jquery.dataTables.min.css" rel="stylesheet">
-		<link href="css/styles.css" rel="stylesheet">
+		<meta name="../viewport" content="width=device-width, initial-scale=1.0">
+		<link href="../libs/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../libs/bootstrap-datepicker/datepicker.css" rel="stylesheet">
+		<link href="../libs/datatables-1.10.12/jquery.dataTables.min.css" rel="stylesheet">
+		<link href="../css/styles.css" rel="stylesheet">
 
-		<script src="libs/jquery-2.1.4.min.js"></script>
-		<script src="libs/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
-		<script src="libs/datatables-1.10.12/jquery.dataTables.min.js"></script>
+		<script src="../libs/jquery-2.1.4.min.js"></script>
+		<script src="../libs/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+		<script src="../libs/datatables-1.10.12/jquery.dataTables.min.js"></script>
 
 	</head>
 	<body>
@@ -25,17 +25,17 @@
 			<div class="col-md-10 col-md-offset-1">
 				<div class="row logo">
 					<a href="index.php">
-						<img src="imgs/logo.png" class="img-responsive" alt="Responsive image">
+						<img src="../imgs/logo.png" class="img-responsive" alt="Responsive image">
 					</a>
 				</div>
 				<div class="row header">
 					<div class="col-md-2 col-md-offset-10 menu-text">
-						<a href="login.php">Log Out</a>
+						<a href="../login.php">Log Out</a>
 					</div>
 				</div>			
 				<div class="row content">
 					<ul class="nav nav-tabs">
-					  	<li><a href="stored_videos.php">Stored Videos</a></li>
+					  	<li><a href="index.php">Stored Videos</a></li>
 					  	<li class="active"><a>Scrap Videos</a></li>
 					  	<!-- <li><a href="manage_users.php">Manage Users</a></li> -->
 					</ul>
@@ -142,7 +142,7 @@
 	  			$(".progress-bar").animate({width: "100%"}, 30000);
 	  		});
 
-	  		$.get('controller.php?flag=scrap_videos&site_url=' + $('.video_url_text').val(), function (response) {
+	  		$.get('../controller.php?flag=scrap_videos&site_url=' + $('.video_url_text').val(), function (response) {
 	  			rows = eval(response);
 	  			html = '';
 	  			for (r in rows) {
@@ -196,7 +196,7 @@
 	    	if (confirm('Are you sure want to save this video to your database?')) {
 	    		$.ajax({
 					type: "POST",
-					url: 'controller.php?flag=save_video',
+					url: '../controller.php?flag=save_video',
 					data: {
 			    		title : $('.title', rowObj).html(),
 			    		description : $('.description', rowObj).html(),

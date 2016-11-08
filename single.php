@@ -1,19 +1,14 @@
 <?php
 	require_once('controller.php');
+
 	$video = getVideoInfo ($_REQUEST['id']); 
 ?>
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 	<head>
-		<meta charset="utf-8">
-		<title>People</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href="libs/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
-		<link href="libs/bootstrap-datepicker/datepicker.css" rel="stylesheet">
-		<link href="css/styles.css" rel="stylesheet">
-
-		<script src="libs/jquery-2.1.4.min.js"></script>
-		<script src="libs/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+		<title>Single Video</title>
+		<?php common('common_libraries') ?>
+		<?php common('google_tag_header'); ?>
 	</head>
 	<body>
 		<div class="row">
@@ -23,20 +18,9 @@
 						<img src="imgs/logo.png" class="img-responsive" alt="Responsive image">
 					</a>
 				</div>
-				<div class="row header">
-					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
-						<a href="#">VIDEOS</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
-						<a href="#">RANDOM</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
-						<a href="#">SEARCH</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
-						<a href="#">CONTACT</a>
-					</div>
-				</div>
+				
+				<?php common('header_menu', array('old_id' => $_REQUEST['id'])); ?>
+
 				<div class="row content">
 					<div class="col-md-12">
 						<div class="embed-responsive embed-responsive-4by3">
@@ -49,25 +33,12 @@
 				<div class="row more">
 					<a href="index.php" type="button" class="btn btn-lg btn-block btn-warning">MORE VIDEOS</a>
 				</div>
-				<div class="row footer ">
-					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
-						<a href="#">VIDEOS</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
-						<a href="#">RANDOM</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
-						<a href="#">SEARCH</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 menu-text">
-						<a href="#">CONTACT</a>
-					</div>
-				</div>
-				<div class="row copyright">
-					COPYRIGHT © THEBESTOFJUICE ON THE COPYRIGHT BIT
-				</div>
+
+				<?php common('footer_menu'); ?>
+
 			</div>
 		</div>
 	</body>
+	<?php common('google_tag_footer'); ?>
 </html>
 

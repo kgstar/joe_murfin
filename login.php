@@ -147,7 +147,7 @@
 			url += '&password=' + $('#password').val();
 			$.get(url, function (response) {
 				if (response == 'OK') {
-					window.open('stored_videos.php', '_self');
+					window.open('admin/index.php', '_self');
 				} else if (response == 'BAD_USERNAME') {
 					alert('Wrong user!');
 					$('#username').focus().select();
@@ -163,23 +163,7 @@
 		}
 
 		function signUp () {
-			url = 'controller.php?flag=signup';
-			url += '&username=' + $('#username').val();
-			url += '&email=' + $('#email').val();
-			url += '&password=' + $('#password').val();
-			$.get(url, function (response) {
-				if (response == 'OK') {
-					window.open('stored_videos.php', '_self');
-				} else if (response == 'BAD_USERNAME') {
-					alert('The user is not exists.');
-				} else if (response == 'BAD_PASSWORD') {
-					alert('Given wrong password.');
-				} else {
-
-				}
-				$('#username').parent().removeClass('has-error');
-				$('#password').parent().removeClass('has-error');
-			});
+			
 		}
 	</script>
 </html>

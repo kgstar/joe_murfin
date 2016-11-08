@@ -55,8 +55,12 @@
                 $videoURL = 'http://youtube.com/embed/' . $ary[0];
             } else {
                 $ary = explode("<iframe class='stramable vembed embed-responsive-item' src='", $videoSite);
-                $ary = explode("' frameborder='0'", $ary[1]);
-                $videoURL = $ary[0];
+                if (isset($ary[1])) {
+                    $ary = explode("' frameborder='0'", $ary[1]);
+                    $videoURL = $ary[0];
+                } else {
+                    $videoURL = 'ERROR!';
+                }
             }
             $info[] = array(
                 'title' => $node->getElementsByTagName('a')->item(0)->getElementsByTagName('h2')->item(0)->nodeValue, 

@@ -17,6 +17,10 @@
       $videos = getStoredVideos();
       exit (json_encode($videos));
     
+    case 'add_video_link':
+      exit (addVideoLink($_REQUEST['title'], $_REQUEST['description'], $_REQUEST['video_url']));
+    
+    
     case 'change_video_info':
       exit (changeVideoInfo($_REQUEST['video_id'], $_REQUEST['title'], $_REQUEST['description']));
     
