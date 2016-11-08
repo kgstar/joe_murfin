@@ -8,7 +8,7 @@
 <html lang="en" ng-app="myApp">
 	<head>
 		<meta charset="utf-8">
-		<title>People</title>
+		<title>Scrap Videos</title>
 		<meta name="../viewport" content="width=device-width, initial-scale=1.0">
 		<link href="../libs/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
 		<link href="../libs/bootstrap-datepicker/datepicker.css" rel="stylesheet">

@@ -45,17 +45,18 @@
 		return getRow($result);
     }
 
-    function getStoredVideos ($keyword = '') {
+    function getStoredVideos ($keyword = '', $pageNum = 1) {
     	$db = getDB();
     	$where = 1;
     	if ($keyword != '') {
     		$where = " title LIKE '%".$keyword."%'/* OR description LIKE '%".$keyword."%'*/";
     	}
+    	$cnt = 12;	// amount of videos in one list.
     	$result = mysqli_query($db, "
 			SELECT * FROM `juice_db`.`videos` 
 			WHERE ".$where." 
 			ORDER BY reg_ymd DESC 
-			LIMIT 0, 10
+			LIMIT ".(($pageNum * 1 - 1) * $cnt).", ".$cnt."
 		") or die (mysqli_error($db));
 		return getRows($result);
     }
@@ -192,7 +193,7 @@
 					</div>
 				</div>
 				<div class="row copyright">
-					COPYRIGHT © THEBESTOFJUICE ON THE COPYRIGHT BIT 
+					COPYRIGHT © THEBESTOFJUICE 
 				</div>
 			';
     	} else if ($flag == 'google_tag_header') {

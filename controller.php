@@ -30,8 +30,12 @@
     case 'signin':
       $status = getLoggableStatus($_REQUEST['username'], $_REQUEST['password']);
       exit($status);
+    
+    case 'more_videos':
+      $videos = getStoredVideos($_REQUEST['keyword'], $_REQUEST['pagenum']);
+      exit(json_encode($videos));
   	
-  	default:
+    default:
   		# code...
   		break;
   }

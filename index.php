@@ -23,11 +23,11 @@
 				
 				<?php common('header_menu'); ?>
 
-				<div class="row content">
+				<div class="row content" id="containerDiv">
 				<?php 
 					if (sizeof($videos)) {
 						foreach($videos as $key => $video) {
-							echo '<div class="col-md-6 video-div">';
+							echo '<div class="col-xs-12 col-sm-6 col-md-6 video-div">';
 								echo '<a href="single.php?id='.$video['id'].'" class="video-sub-title">';
 									echo '<img src="'.$video['thumbnail'].'" class="img-responsive max-width" alt="Responsive image">';
 									$title = $video['title'];
@@ -45,7 +45,7 @@
 				?>
 				</div>
 				<div class="row more">
-					<a href="index.php" type="button" class="btn btn-lg btn-block btn-warning">MORE VIDEOS</a>
+					<button id="moreVideosBtn" class="btn btn-lg btn-block btn-warning">MORE VIDEOS</a>
 				</div>
 				
 				<?php common('footer_menu'); ?>
@@ -53,6 +53,37 @@
 			</div>
 		</div>
 	</body>
+	<script type="text/javascript">
+		var pageNum = 2;
+
+		$(document).ready(function () {
+			$('#moreVideosBtn').click(function () {
+				getMoreVideos();
+			});
+		});
+
+		function getMoreVideos() {
+			url = 'controller.php?flag=more_videos';
+			url += '&keyword=<?php echo $keyword; ?>';
+			url += '&pagenum=' + pageNum;
+			$.get(url, function (response) {
+				rows = eval(response);
+				html = '';
+				for (r in rows) {
+					row = rows[r];
+					html += '<div class="col-xs-12 col-sm-6 col-md-6 video-div">';
+						html += '<a href="single.php?id=' + row['id'] + '" class="video-sub-title">';
+							html += '<img src="' + row['thumbnail'] + '" class="img-responsive max-width" alt="Responsive image">';
+							
+							html += '<div class="h4 ">' + row['title'] + '</div>';
+						html += '</a>';
+					html += '</div>';
+				}
+				$('#containerDiv').append(html);
+			});
+			pageNum ++;
+		}
+	</script>
 	<?php common('google_tag_footer'); ?>
 </html>
 
