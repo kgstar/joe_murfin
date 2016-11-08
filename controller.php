@@ -23,7 +23,7 @@
     case 'delete_video':
       exit (deleteVideo($_REQUEST['video_id']));
     
-    case 'login':
+    case 'signin':
       $status = getLoggableStatus($_REQUEST['username'], $_REQUEST['password']);
       exit($status);
   	

@@ -1,8 +1,11 @@
+body {
+	margin: 15px;
+}
 .menu-text {
     text-align: center;
     
 }
-.menu-text a:hover {
+.menu-text a:hover, .menu-text a:focus {
 	text-decoration: none;
 }
 .menu-text a {

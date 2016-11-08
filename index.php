@@ -15,6 +15,15 @@
 
 		<script src="libs/jquery-2.1.4.min.js"></script>
 		<script src="libs/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+
+
+		<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-M5M3TB');</script>
+		<!-- End Google Tag Manager -->
 	</head>
 	<body>
 		<div class="row">
@@ -67,10 +76,15 @@
 					</div>
 				</div>
 				<div class="row copyright">
-					COPYRIGHT © WILL NEED NAME INSERTING HERE
+					COPYRIGHT © THEBESTOFJUICE ON THE COPYRIGHT BIT 
+					<a href="mailto:joe@thebestofjuice.com?Subject=Hello">joe@thebestofjuice.com</a>
 				</div>
 			</div>
 		</div>
 	</body>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5M3TB"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
 </html>
 

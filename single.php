@@ -64,7 +64,7 @@
 					</div>
 				</div>
 				<div class="row copyright">
-					COPYRIGHT © WILL NEED NAME INSERTING HERE
+					COPYRIGHT © THEBESTOFJUICE ON THE COPYRIGHT BIT
 				</div>
 			</div>
 		</div>

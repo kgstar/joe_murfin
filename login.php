@@ -80,7 +80,7 @@
 				<div class="row footer ">
 				</div>
 				<div class="row copyright">
-					COPYRIGHT © WILL NEED NAME INSERTING HERE
+					COPYRIGHT © THEBESTOFJUICE ON THE COPYRIGHT BIT
 				</div>
 			</div>
 		</div>
@@ -102,12 +102,14 @@
 				$(this).addClass('active');
 				e.preventDefault();
 			});
+
+			// trigger if clicks log in button
 			$('#login-submit').click(function () {
 				if ($('#username').val() != '') {
 					$('#username').parent().removeClass('has-error');
 					if ($('#password').val() != '') {
 						$('#password').parent().removeClass('has-error');
-						doLogin(); 
+						signIn(); 
 					} else {
 						$('#password').parent().addClass('has-error');
 					}
@@ -124,8 +126,8 @@
 			});
 		});
 
-		function doLogin () {
-			url = 'controller.php?flag=login';
+		function signIn () {
+			url = 'controller.php?flag=signin';
 			url += '&username=' + $('#username').val();
 			url += '&password=' + $('#password').val();
 			$.get(url, function (response) {
@@ -143,8 +145,24 @@
 			});
 		}
 
-		function registerUser () {
+		function signUp () {
+			url = 'controller.php?flag=signup';
+			url += '&username=' + $('#username').val();
+			url += '&email=' + $('#email').val();
+			url += '&password=' + $('#password').val();
+			$.get(url, function (response) {
+				if (response == 'OK') {
+					window.open('stored_videos.php', '_self');
+				} else if (response == 'BAD_USERNAME') {
+					alert('Retype text for user name');
+				} else if (response == 'BAD_PASSWORD') {
+					alert('Retype text for password');
+				} else {
 
+				}
+				$('#username').parent().removeClass('has-error');
+				$('#password').parent().removeClass('has-error');
+			});
 		}
 	</script>
 </html>
