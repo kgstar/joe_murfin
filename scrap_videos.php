@@ -51,7 +51,7 @@
 									<div class="row">
 										<div class="col-sm-5">
 											<div class="input-group dropdown">
-									          	<input type="text" class="form-control video_url_text dropdown-toggle" value="Wimp.com">
+									          	<input type="text" id="keyword_txt" class="form-control video_url_text dropdown-toggle" value="Wimp.com">
 									          	<ul class="dropdown-menu">
 										            <li><a href="#" data-value="Wimp.com">Wimp.com</a></li>
 										            <li><a href="#" data-value="Devour.com">Devour.com</a></li>
@@ -61,7 +61,7 @@
 									        </div>
 										</div>
 										<div class="col-sm-2">
-											<button class="form-control btn btn-lg btn-info" id="scrap_video">Scrap</button>
+											<button class="form-control btn btn-lg btn-primary" id="scrap_video">Scrap</button>
 										</div>
 										<div class="col-sm-5">
 											<div class="progress progress-striped active">
@@ -129,6 +129,11 @@
 		  		scrapVideo();
 		  	});
 		  	
+		  	$("#keyword_txt").keyup(function (e) {
+			  if (e.keyCode == 13) {
+			    scrapVideo();
+			  }
+			})
 		  	// scrapVideo();
 		});
 

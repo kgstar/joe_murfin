@@ -124,6 +124,21 @@
 					$('#username').parent().addClass('has-error');
 				}
 			});
+
+			$('#username').keypress(function (e) {
+				if (e.keyCode == 13) {
+					$('#password').focus().select();
+				}
+			});
+
+			$('#password').keypress(function (e) {
+				if (e.keyCode == 13) {
+					signIn();
+				}
+			});
+
+			$('#username').focus();
+
 		});
 
 		function signIn () {
@@ -134,9 +149,11 @@
 				if (response == 'OK') {
 					window.open('stored_videos.php', '_self');
 				} else if (response == 'BAD_USERNAME') {
-					alert('Retype text for user name');
+					alert('Wrong user!');
+					$('#username').focus().select();
 				} else if (response == 'BAD_PASSWORD') {
-					alert('Retype text for password');
+					alert('Wrong password!');
+					$('#password').focus().select();
 				} else {
 
 				}
@@ -154,9 +171,9 @@
 				if (response == 'OK') {
 					window.open('stored_videos.php', '_self');
 				} else if (response == 'BAD_USERNAME') {
-					alert('Retype text for user name');
+					alert('The user is not exists.');
 				} else if (response == 'BAD_PASSWORD') {
-					alert('Retype text for password');
+					alert('Given wrong password.');
 				} else {
 
 				}
