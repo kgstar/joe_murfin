@@ -45,6 +45,22 @@
 		return getRow($result);
     }
 
+    function getAllVideoCount ($keyword = '') {
+    	$db = getDB();
+    	$where = 1;
+    	if ($keyword != '') {
+    		$where = " title LIKE '%".$keyword."%'/* OR description LIKE '%".$keyword."%'*/";
+    	}
+
+    	$cnt = 12;	// amount of videos in one list.
+    	$result = mysqli_query($db, "
+			SELECT * FROM `juice_db`.`videos` 
+			WHERE ".$where." 
+		") or die (mysqli_error($db));
+
+		return sizeof(getRows($result));
+    }
+
     function getStoredVideos ($keyword = '', $pageNum = 1) {
     	$db = getDB();
     	$where = 1;
@@ -56,7 +72,7 @@
 			SELECT * FROM `juice_db`.`videos` 
 			WHERE ".$where." 
 			ORDER BY reg_ymd DESC 
-			LIMIT ".(($pageNum * 1 - 1) * $cnt).", ".$cnt."
+			".($pageNum == 0 ? "" : "LIMIT ".(($pageNum * 1 - 1) * $cnt).", ".$cnt."")."
 		") or die (mysqli_error($db));
 		return getRows($result);
     }

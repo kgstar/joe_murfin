@@ -1,8 +1,12 @@
 <?php 
+	require_once('../controller.php');
+
 	$loggedIn = true;
 	if ($loggedIn) {
 		// header('Location: login.php');
 	}
+
+	// $allCount = getAllVideoCount("a");
 ?>
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
@@ -13,10 +17,12 @@
 		<link href="../libs/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
 		<link href="../libs/bootstrap-datepicker/datepicker.css" rel="stylesheet">
 		<link href="../libs/datatables-1.10.12/jquery.dataTables.min.css" rel="stylesheet">
+		<link href="../libs/flaviusmatis-pagination/simplePagination.css" rel="stylesheet">
 		<link href="../css/styles.css" rel="stylesheet">
 
 		<script src="../libs/jquery-2.1.4.min.js"></script>
 		<script src="../libs/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+		<script src="../libs/flaviusmatis-pagination/jquery.simplePagination.js"></script>
 		<script src="../libs/datatables-1.10.12/jquery.dataTables.min.js"></script>
 
 	</head>
@@ -58,6 +64,7 @@
 							        </thead>
 							        <tbody id="tbody"> </tbody>
 							    </table>
+							    <div class="custom-pagination"></div>
 					    	</div>
 					  	</div>
 
@@ -171,18 +178,23 @@
 	</body>
 	<script type="text/javascript">
 		$(document).ready(function() {
-		    $('#example').DataTable({
+		    /*$('#example').DataTable({
 		    	"searching": false,
 		    	"ordering": false,
 		    	"bFilter" : false,               
 				"bLengthChange": false
-		    });
+		    });*/
+		    
+		    /*$('.custom-pagination').pagination({
+		    	items: <?php echo $allCount; ?>, 
+		    }).first().css({'float':'right'});*/
 
 		    loadVideos();
 		});
 
 		function loadVideos () {
 			url = '../controller.php?flag=get_stored_videos';
+			url += '&pagenum=0';
 			$.get(url, function (response) {
 				rows = eval(response);
 	  			html = '';

@@ -14,7 +14,7 @@
       exit (saveVideoInfo($_REQUEST['title'], $_REQUEST['description'], $_REQUEST['video_url'], $_REQUEST['thumbnail']));
     
     case 'get_stored_videos':
-      $videos = getStoredVideos();
+      $videos = getStoredVideos('', $_REQUEST['pagenum']);
       exit (json_encode($videos));
     
     case 'add_video_link':
